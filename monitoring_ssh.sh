@@ -1,18 +1,20 @@
 #!/bin/bash
 
+source monitor_ssh_lib.sh
+
 PREV_USER=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
 echo "SSH service started"
 
 while true
 do
-    NEW_USER=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
-    RES=$(diff <( echo "$PREV_USER") <( echo "$NEW_USER") |  grep ">" )
-    if [ -n "$RES" ]
-    then
-        echo "$RES has been successfully login"
-        notify-send "$RES has been succesfully login"
-    fi
-    PREV_USER=$NEW_USER
-    sleep 30
+	NEW_USER=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
+	TMP=$(check_ssh_users "$PREV_USER" "$NEW_USER")
+	if [ -n "$TMP" ]	
+	then
+		PREV_USER=$NEW_USER
+		echo "$TMP successfully login"
+		notify-send "$TMP successfully login"
+	fi
+	sleep 30
 done
 
