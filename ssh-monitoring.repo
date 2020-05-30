@@ -1,0 +1,5 @@
+[ssh-monitoring]
+name=ssh-monitoring
+baseurl=file:///var/www/html/ssh-monitoring
+gpgkey=file:///var/www/html/gpg-key
+enabled=1
