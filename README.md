@@ -1,54 +1,66 @@
+# Сервис мониторинга сеансов пользователей
+
+Разработать сервис, который выполняет мониторинг подключённых к системе пользователей по ssh каждые 30 секунд. При подключении внешнего пользователя по ssh, пользователю должно выводиться на экран уведомление (механизм notify) с именем пользователя, который подключился к системе удалённо.
+
+## Выполнили:
+
+Студенты группы Б17-505
+
+- Гришин Максим
+- Иванова Нина
+- Николаева Елизавета
+- Худоярова Анастасия
+- Шайбель Анастасия
+
+# Демонстрация:
+
 ### Создание политики SELinux
 
-1. Сгенерировать шаблон модуля политики SELinux:
-
-`sepolicy generate --init ssh_monitoring`
+1. Сгенерировать шаблон модуля политики SELinux: `sepolicy generate --init ssh_monitoring`
 
 Будут созданы 5 файлов:
 
--Type Enforcing File ssh_monitoring.te; 
+- Type Enforcing File ssh_monitoring.te;
 
--Interface File ssh_monitoring.if; 
+- Interface File ssh_monitoring.if;
 
--File Context ssh_monitoring.fc; 
+- File Context ssh_monitoring.fc;
 
--RPM Spec File ssh_monitoring_selinux.spec; 
+- RPM Spec File ssh_monitoring_selinux.spec;
 
--Shell File ssh_monitoring.sh
+- Shell File ssh_monitoring.sh
 
 2. Запустить скрипт ssh_monitoring.sh:
+   `sudo ./ssh_monitoring.sh`
 
-`sudo ./ssh_monitoring.sh`
-
-Будет создан модуль политики SELinux - файл ssh_monitoring.pp
+Будет создан модуль политики SELinux - файл `ssh_monitoring.pp`
 
 3. Добавить политику в список системных модулей:
+   `semodule -i ssh_monitoring.pp`
 
-`semodule -i ssh_monitoring.pp`
-
-4. Изменить контекст безопасности (тип) сервиса : 
+4. Изменить контекст безопасности (тип) сервиса :
 
 `sudo chcon -t ssh_monitoring_exec_t /usr/bin/ssh-monitoring`
 
-Посмотреть изменившийся контекст можно командой: 
+Посмотреть изменившийся контекст можно командой:
 
 `ps -eZ | grep ssh-monitoring`
 
 ![](https://sun1-99.userapi.com/NgBV9yEECpgx71EZmFH34TF6ofKNJtkP3oh4Kg/rvyt1f8yy98.jpg)
 
-5.  Проверить работу сервиса: 
+5.  **Проверить** работу сервиса:
 
 Подключиться к ssh от имени другого пользователя cheraten1 и переключиться обратно на cheraten:
 
 ![](https://sun1-96.userapi.com/WOca_Rpg1t-ki21X8V9VU6ZhHGnl-fuP_RJ79Q/0Q-iAvySYTg.jpg)
 
-Посмотреть запись в файле /var/log/messages: 
+Посмотреть запись в файле `/var/log/messages`:
 
 ![](https://sun9-50.userapi.com/Sm65W38UyAn_xZ-uwF59BwsVe3PV61f0CfVW7A/C0n9RYijLgo.jpg)
 
 ![](https://sun9-72.userapi.com/PcwRn9YLQbS7cPUVJmi68v5OvZmZ1tXLv-HI9w/wOvk0Sy6_ds.jpg)
 
-При появлении сообщений в файле /var/log/messages о необходимости создания дополнительных модулей политики, выполнить предложенные команды.
+При появлении сообщений в файле `/var/log/messages` о необходимости создания дополнительных модулей политики, выполнить предложенные команды.
 
 ### Сборка RPM пакета и создание репозитория
 
@@ -82,7 +94,7 @@
 
 ![](https://sun1-96.userapi.com/BLZSoy_qCRdC4dTc5YYKfXyKasUgvLoJGrMEFg/Ol8k2qC9QzE.jpg)
 
-4. `gpg --export --armor 7A36FC6D  > /tmp/gpg-key`
+4. `gpg --export --armor 7A36FC6D > /tmp/gpg-key`
 
 5. `cp /tmp/gpg-key /var/www/html/`
 
@@ -90,7 +102,7 @@
 
 1. `sudo yum install ssh-monitoring`
 2. `sudo systemctl start ssh-monitoring`
-3. Дерево процессов
+3. **Дерево процессов**
 
 `pstree`
 
@@ -98,7 +110,7 @@
 
 4. `ps -eZ | grep ssh-monitoring`
 
-Сервис работает в собственном домене.
+Сервис работает в **собственном** домене.
 
 ![](https://sun1-89.userapi.com/FiXlLQIYpdQlhLnrwd-1kaDih6l7XuvmVLJHuA/TbPddxQDKQM.jpg)
 
@@ -106,29 +118,32 @@
 
 6. `journalctl -f -u ssh-monitoring`
 
-Перезапуск сервиса.
+**Собственный журнал событий**. Ведутся записи о старте сервиса, его остановке, о выполнении основной функции.
 
-![](https://sun1-47.userapi.com/Z_D0brtaNUemK9lB2RCy0Q1yasRkRMf2tRf3bg/_i7Qa4e20iE.jpg)
+![](https://drive.google.com/uc?id=1F5gITk5BIYh1z_UQGNKNnN5z8pgs3hAa)
 
-Запуск сервиса (сообщения в /var/log/messages)
+**Запуск** сервиса (логгирование запуска в `/var/log/messages`)
 
 ![](https://sun1-24.userapi.com/X7F-hvXeN33BgXDyYC61_BMKl45h8C5Iqy08Hw/OCs3ngFuULE.jpg)
 
-7. Подключение пользователя cheraten1 в систему по ssh
+7. **Подключение** пользователя cheraten1 в систему по ssh
 
 ![](https://sun9-67.userapi.com/rurpc4FcLs_drGBC6EgVZNUp3XErJcqAxBc2Ww/WwG62pUfFlo.jpg)
 
-Сообщения в /var/log/messages:
+**Запись** логов работы сервиса при подключении в `/var/log/messages` и запись о выполнении функции в журнале (см.пункт выше)
 
-![](https://sun9-71.userapi.com/GIXqZtUmRZtyplW0v-kZmS_9kXBwkjaAAQx5sQ/uhlLjmR4-sc.jpg)
+![](https://drive.google.com/uc?id=1M8acy4oWWC9Yu3Vrb340y-dV0PGIjACL)
 
-8. Обработка сигнала USR1:
+**Вывод уведомления** при подключении пользователя akhudoyarova на стороне сервера и клиента
+
+![](https://drive.google.com/uc?id=1aN7WbMzwZTvJgSfQCL4LGyM57eT-30ZX)
+
+8. **Обработка** сигнала **USR1**:
 
 ![](https://sun9-6.userapi.com/_cs9lbK-xs9S63aPOn3586q6TtmXWhfJ5mTZWA/uPIgpgs0zuo.jpg)
 
-![](https://sun9-17.userapi.com/fV3Us2ksMmzeeT7jgvr_CpwhQMRKW32A06GQqQ/1ygDYYpRJRU.jpg)
+![](https://drive.google.com/uc?id=1aV4RsIbaYN8CbDa-eTmUZh34_iD0-rFG)
 
-9. Демонстрация man страницы
+9. Демонстрация **man** страницы
 
 ![](https://sun1-93.userapi.com/cMysp4JZOrN3BGJ2S6sqAdO_reDBPmuZENqJWw/At1EGKtEPCg.jpg)
-
