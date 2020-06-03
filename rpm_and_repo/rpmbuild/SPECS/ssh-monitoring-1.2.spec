@@ -24,14 +24,12 @@ mkdir -p %{buildroot}/etc/systemd/system/
 mkdir -p %{buildroot}%{_mandir}/man8
 install -m 755 ssh-monitoring\.sh %{buildroot}%{_bindir}/
 install -m 755 ssh-monitoring-lib.sh %{buildroot}%{_bindir}/
-install -m 755 ssh-monitoring-test.sh %{buildroot}%{_bindir}/
 install -m 644 ssh-monitoring.service %{buildroot}/etc/systemd/system/
 install -m 644 ssh-monitoring.8.gz %{buildroot}%{_mandir}/man8/
 
 %files
 %{_bindir}/ssh-monitoring.sh
 %{_bindir}/ssh-monitoring-lib.sh
-%{_bindir}/ssh-monitoring-test.sh
 /etc/systemd/system/ssh-monitoring.service
 %{_mandir}/man8/ssh-monitoring.8.gz
 %defattr(-,root,root,0755)

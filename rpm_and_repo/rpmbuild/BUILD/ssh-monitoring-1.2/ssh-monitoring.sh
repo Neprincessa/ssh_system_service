@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source monitor_ssh_lib.sh
+source ssh-monitoring-lib.sh
 
 PREV_USER=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
 
