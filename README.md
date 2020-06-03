@@ -38,13 +38,13 @@
 
 5.  Проверить работу сервиса: 
 
-Подключиться к ssh отименидругогопользователя cheraten1 и переключиться обратно на cheraten:
+Подключиться к ssh от имени другого пользователя cheraten1 и переключиться обратно на cheraten:
 
 ![](https://sun1-96.userapi.com/WOca_Rpg1t-ki21X8V9VU6ZhHGnl-fuP_RJ79Q/0Q-iAvySYTg.jpg)
 
-![](https://sun9-50.userapi.com/Sm65W38UyAn_xZ-uwF59BwsVe3PV61f0CfVW7A/C0n9RYijLgo.jpg)
-
 Посмотреть запись в файле /var/log/messages: 
+
+![](https://sun9-50.userapi.com/Sm65W38UyAn_xZ-uwF59BwsVe3PV61f0CfVW7A/C0n9RYijLgo.jpg)
 
 ![](https://sun9-72.userapi.com/PcwRn9YLQbS7cPUVJmi68v5OvZmZ1tXLv-HI9w/wOvk0Sy6_ds.jpg)
 
@@ -86,7 +86,7 @@
 
 5. `cp /tmp/gpg-key /var/www/html/`
 
-### Установка сервиса
+### Демонстрация работы сервиса
 
 1. `sudo yum install ssh-monitoring`
 2. `sudo systemctl start ssh-monitoring`
@@ -104,15 +104,25 @@
 
 ![](https://sun1-47.userapi.com/Z_D0brtaNUemK9lB2RCy0Q1yasRkRMf2tRf3bg/_i7Qa4e20iE.jpg)
 
-6. Подключение пользователя cheraten1 по ssh
+Запуск сервиса (сообщения в /var/log/messages)
 
-![](https://sun1-96.userapi.com/WOca_Rpg1t-ki21X8V9VU6ZhHGnl-fuP_RJ79Q/0Q-iAvySYTg.jpg)
+![](https://sun1-24.userapi.com/X7F-hvXeN33BgXDyYC61_BMKl45h8C5Iqy08Hw/OCs3ngFuULE.jpg)
 
-![](https://sun9-50.userapi.com/Sm65W38UyAn_xZ-uwF59BwsVe3PV61f0CfVW7A/C0n9RYijLgo.jpg)
+6. Подключение пользователя cheraten1 в систему по ssh
 
-![](https://sun9-72.userapi.com/PcwRn9YLQbS7cPUVJmi68v5OvZmZ1tXLv-HI9w/wOvk0Sy6_ds.jpg)
+![](https://sun9-67.userapi.com/rurpc4FcLs_drGBC6EgVZNUp3XErJcqAxBc2Ww/WwG62pUfFlo.jpg)
 
-7. Демонстрация man страницы
+Сообщения в /var/log/messages:
+
+![](https://sun9-71.userapi.com/GIXqZtUmRZtyplW0v-kZmS_9kXBwkjaAAQx5sQ/uhlLjmR4-sc.jpg)
+
+7. Обработка сигнала USR1:
+
+![](https://sun9-6.userapi.com/_cs9lbK-xs9S63aPOn3586q6TtmXWhfJ5mTZWA/uPIgpgs0zuo.jpg)
+
+![](https://sun9-17.userapi.com/fV3Us2ksMmzeeT7jgvr_CpwhQMRKW32A06GQqQ/1ygDYYpRJRU.jpg)
+
+8. Демонстрация man страницы
 
 ![](https://sun1-93.userapi.com/cMysp4JZOrN3BGJ2S6sqAdO_reDBPmuZENqJWw/At1EGKtEPCg.jpg)
 
