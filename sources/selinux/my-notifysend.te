@@ -1,0 +1,13 @@
+
+module my-notifysend 1.0;
+
+require {
+	type system_dbusd_var_lib_t;
+	type ssh_monitoring_t;
+	class dir search;
+	class file { getattr open read };
+}
+
+#============= ssh_monitoring_t ==============
+allow ssh_monitoring_t system_dbusd_var_lib_t:dir search;
+allow ssh_monitoring_t system_dbusd_var_lib_t:file { getattr open read };

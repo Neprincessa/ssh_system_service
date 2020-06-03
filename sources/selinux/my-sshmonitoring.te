@@ -1,0 +1,17 @@
+
+module my-sshmonitoring 1.0;
+
+require {
+	type bin_t;
+	type ssh_monitoring_t;
+	type proc_t;
+	class file { execute getattr open read };
+}
+
+#============= ssh_monitoring_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow ssh_monitoring_t bin_t:file execute;
+
+#!!!! This avc is allowed in the current policy
+allow ssh_monitoring_t proc_t:file { getattr open read };
