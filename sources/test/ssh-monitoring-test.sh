@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ssh-monitoring-lib.sh
+source ../service/ssh-monitoring-lib.sh
 
 CURRENT=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
 
@@ -27,4 +27,5 @@ then
 fi
 
 echo "Success service work"
+man ssh-monitoring
 exit 0
