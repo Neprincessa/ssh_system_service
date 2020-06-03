@@ -90,15 +90,21 @@
 
 1. `sudo yum install ssh-monitoring`
 2. `sudo systemctl start ssh-monitoring`
-3. `ps -eZ | grep ssh-monitoring`
+3. Дерево процессов
+
+`pstree`
+
+![](https://sun1-16.userapi.com/QEoe0EL-knQ-LpoCtzalTxraQijffHmBEDYIQw/rtzqziJWvy0.jpg)
+
+4. `ps -eZ | grep ssh-monitoring`
 
 Сервис работает в собственном домене.
 
 ![](https://sun1-89.userapi.com/FiXlLQIYpdQlhLnrwd-1kaDih6l7XuvmVLJHuA/TbPddxQDKQM.jpg)
 
-4. `sudo systemctl restart ssh-monitoring`
+5. `sudo systemctl restart ssh-monitoring`
 
-5. `journalctl -f -u ssh-monitoring`
+6. `journalctl -f -u ssh-monitoring`
 
 Перезапуск сервиса.
 
@@ -108,7 +114,7 @@
 
 ![](https://sun1-24.userapi.com/X7F-hvXeN33BgXDyYC61_BMKl45h8C5Iqy08Hw/OCs3ngFuULE.jpg)
 
-6. Подключение пользователя cheraten1 в систему по ssh
+7. Подключение пользователя cheraten1 в систему по ssh
 
 ![](https://sun9-67.userapi.com/rurpc4FcLs_drGBC6EgVZNUp3XErJcqAxBc2Ww/WwG62pUfFlo.jpg)
 
@@ -116,13 +122,13 @@
 
 ![](https://sun9-71.userapi.com/GIXqZtUmRZtyplW0v-kZmS_9kXBwkjaAAQx5sQ/uhlLjmR4-sc.jpg)
 
-7. Обработка сигнала USR1:
+8. Обработка сигнала USR1:
 
 ![](https://sun9-6.userapi.com/_cs9lbK-xs9S63aPOn3586q6TtmXWhfJ5mTZWA/uPIgpgs0zuo.jpg)
 
 ![](https://sun9-17.userapi.com/fV3Us2ksMmzeeT7jgvr_CpwhQMRKW32A06GQqQ/1ygDYYpRJRU.jpg)
 
-8. Демонстрация man страницы
+9. Демонстрация man страницы
 
 ![](https://sun1-93.userapi.com/cMysp4JZOrN3BGJ2S6sqAdO_reDBPmuZENqJWw/At1EGKtEPCg.jpg)
 
