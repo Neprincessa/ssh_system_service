@@ -120,7 +120,7 @@
 
 **Собственный журнал событий**. Ведутся записи о старте сервиса, его остановке, о выполнении основной функции.
 
-![](https://drive.google.com/uc?id=1F5gITk5BIYh1z_UQGNKNnN5z8pgs3hAa)
+![](img/1.png)
 
 **Запуск** сервиса (логгирование запуска в `/var/log/messages`)
 
@@ -132,17 +132,17 @@
 
 **Запись** логов работы сервиса при подключении в `/var/log/messages` и запись о выполнении функции в журнале (см.пункт выше)
 
-![](https://drive.google.com/uc?id=1M8acy4oWWC9Yu3Vrb340y-dV0PGIjACL)
+![](img/2.png)
 
 **Вывод уведомления** при подключении пользователя akhudoyarova на стороне сервера и клиента
 
-![](https://drive.google.com/uc?id=1aN7WbMzwZTvJgSfQCL4LGyM57eT-30ZX)
+![](img/3.png)
 
 8. **Обработка** сигнала **USR1**:
 
 ![](https://sun9-6.userapi.com/_cs9lbK-xs9S63aPOn3586q6TtmXWhfJ5mTZWA/uPIgpgs0zuo.jpg)
 
-![](https://drive.google.com/uc?id=1aV4RsIbaYN8CbDa-eTmUZh34_iD0-rFG)
+![](img/4.png)
 
 9. Демонстрация **man** страницы
 
