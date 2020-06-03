@@ -1,0 +1,25 @@
+policy_module(ssh_monitoring, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type ssh_monitoring_t;
+type ssh_monitoring_exec_t;
+init_daemon_domain(ssh_monitoring_t, ssh_monitoring_exec_t)
+
+permissive ssh_monitoring_t;
+
+########################################
+#
+# ssh_monitoring local policy
+#
+allow ssh_monitoring_t self:fifo_file rw_fifo_file_perms;
+allow ssh_monitoring_t self:unix_stream_socket create_stream_socket_perms;
+
+domain_use_interactive_fds(ssh_monitoring_t)
+
+files_read_etc_files(ssh_monitoring_t)
+
+miscfiles_read_localization(ssh_monitoring_t)
