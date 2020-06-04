@@ -6,11 +6,11 @@
 
 Студенты группы Б17-505
 
-- Гришин Максим
-- Иванова Нина
-- Николаева Елизавета
-- Худоярова Анастасия
-- Шайбель Анастасия
+- Гришин Максим ([MaxG175](https://github.com/MaxG175))
+- Иванова Нина ([cheraten](https://github.com/cheraten))
+- Николаева Елизавета ([elizanikol](https://github.com/elizanikol))
+- Худоярова Анастасия ([Neprincessa](https://github.com/Neprincessa))
+- Шайбель Анастасия ([Lilicat1359](https://github.com/Lilicat1359))
 
 # Демонстрация:
 
@@ -112,15 +112,17 @@
 
 Сервис работает в **собственном** домене.
 
-![](https://sun1-89.userapi.com/FiXlLQIYpdQlhLnrwd-1kaDih6l7XuvmVLJHuA/TbPddxQDKQM.jpg)
+![](https://sun1-28.userapi.com/kv1bBElga7PLKgjIJa8FIgkrHUXhLPDPQ6PTXQ/wRuepAeyVWI.jpg)
 
 5. `sudo systemctl restart ssh-monitoring`
+
+![](https://sun1-98.userapi.com/PZZQqX0sbnU3hdnsO8IMOxb9_-DUoPP3302vdQ/DKbg5dNY7TM.jpg)
 
 6. `journalctl -f -u ssh-monitoring`
 
 **Собственный журнал событий**. Ведутся записи о старте сервиса, его остановке, о выполнении основной функции.
 
-![](img/1.png)
+![](https://sun1-99.userapi.com/wc9RqWDPYPUy824X7XT8owghjVjvOCKPjol9og/nTxRQeFd7hw.jpg)
 
 **Запуск** сервиса (логгирование запуска в `/var/log/messages`)
 
@@ -128,19 +130,19 @@
 
 7. **Подключение** пользователя cheraten1 в систему по ssh
 
-![](https://sun9-67.userapi.com/rurpc4FcLs_drGBC6EgVZNUp3XErJcqAxBc2Ww/WwG62pUfFlo.jpg)
+`ssh cheraten1@localhost`
 
 **Запись** логов работы сервиса при подключении в `/var/log/messages` и запись о выполнении функции в журнале (см.пункт выше)
 
-![](img/2.png)
+![](https://sun1-92.userapi.com/vLJA2zrswKBWXDVe6BE9M1W276qXAiMqhxdBNw/7BjiJqn5QJc.jpg)
 
-**Вывод уведомления** при подключении пользователя akhudoyarova на стороне сервера и клиента
+**Вывод уведомления** при подключении пользователя cheraten1 на стороне сервера и клиента
 
-![](img/3.png)
+![](https://sun9-49.userapi.com/7R0omkz2vJ2iHWI5cFHTfBlkQIPmjp5HFwHqhA/vjLaV01ajPo.jpg)
 
 8. **Обработка** сигнала **USR1**:
 
-![](https://sun9-6.userapi.com/_cs9lbK-xs9S63aPOn3586q6TtmXWhfJ5mTZWA/uPIgpgs0zuo.jpg)
+`sudo kill -SIGUSR1 PID`
 
 ![](img/4.png)
 
