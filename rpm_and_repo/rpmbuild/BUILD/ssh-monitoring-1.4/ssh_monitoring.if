@@ -1,0 +1,40 @@
+
+## <summary>policy for ssh_monitoring</summary>
+
+########################################
+## <summary>
+##	Execute ssh_monitoring_exec_t in the ssh_monitoring domain.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`ssh_monitoring_domtrans',`
+	gen_require(`
+		type ssh_monitoring_t, ssh_monitoring_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, ssh_monitoring_exec_t, ssh_monitoring_t)
+')
+
+######################################
+## <summary>
+##	Execute ssh_monitoring in the caller domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`ssh_monitoring_exec',`
+	gen_require(`
+		type ssh_monitoring_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	can_exec($1, ssh_monitoring_exec_t)
+')

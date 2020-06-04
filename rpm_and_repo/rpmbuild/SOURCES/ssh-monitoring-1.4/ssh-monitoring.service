@@ -1,0 +1,15 @@
+[Unit]
+Description=SSH monitor service
+Documentation=man:ssh-monitoring(8)
+After=sshd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ssh-monitoring.sh
+Restart=always
+User=root
+Group=root
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
